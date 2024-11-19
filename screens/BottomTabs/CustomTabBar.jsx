@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
-  FlatList,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -15,8 +14,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
   const [tabWidths, setTabWidths] = useState([]);
   const translateX = useRef(new Animated.Value(0)).current;
   const [indicatorWidth, setIndicatorWidth] = useState(0);
-  const scaleValue = useRef(new Animated.Value(1)).current; // For bubble animation
-
+  const scaleValue = useRef(new Animated.Value(1)).current;
   useEffect(() => {
     const activeTabWidth = tabWidths[state.index] || 0;
     setIndicatorWidth(activeTabWidth);
