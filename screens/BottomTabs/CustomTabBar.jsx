@@ -4,7 +4,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Animated,
+  Animated
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -25,20 +25,20 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
 
     Animated.spring(translateX, {
       toValue: totalTranslateX + activeTabWidth / 2 - indicatorWidth / 2,
-      useNativeDriver: true,
+      useNativeDriver: true
     }).start();
 
     Animated.sequence([
       Animated.timing(scaleValue, {
-        toValue: 1.2, // Slightly enlarge
+        toValue: 1.2,
         duration: 150,
-        useNativeDriver: true,
+        useNativeDriver: true
       }),
       Animated.spring(scaleValue, {
-        toValue: 1, // Back to original size
+        toValue: 1,
         friction: 5,
-        useNativeDriver: true,
-      }),
+        useNativeDriver: true
+      })
     ]).start();
   }, [state.index, tabWidths]);
 
@@ -62,8 +62,8 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
           styles.indicator,
           {
             width: indicatorWidth,
-            transform: [{ translateX }],
-          },
+            transform: [{ translateX }]
+          }
         ]}
       />
       {state.routes.map((route, index) => {
@@ -81,7 +81,7 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
             <Animated.View
               style={[
                 styles.iconContainer,
-                { transform: [{ scale: isActive ? scaleValue : 1 }] },
+                { transform: [{ scale: isActive ? scaleValue : 1 }] }
               ]}
             >
               <FontAwesome
@@ -113,23 +113,23 @@ const styles = StyleSheet.create({
     left: 16,
     right: 16,
     borderRadius: 10,
-    paddingHorizontal: 5,
+    paddingHorizontal: 5
   },
   tabItem: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     height: 70,
-    position: "relative",
+    position: "relative"
   },
   iconContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   label: {
     fontSize: 12,
-    marginLeft: 4,
+    marginLeft: 4
   },
   indicator: {
     position: "absolute",
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: -1,
-    left: 5,
-  },
+    left: 5
+  }
 });
 
 export default CustomTabBar;
